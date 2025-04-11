@@ -111,6 +111,6 @@ if __name__ == "__main__":
     # datafile = 'prostate'
     # cellfile = 'data\independent_set\independent_cell_features_954.csv'
     cellfile = 'data/independent_set/independent_set_combine_drp.csv'
-    da = ['new_labels_0_10_leave']
+    da = ['new_labels_0_10']
     for datafile in da:
         creat_data(datafile, cellfile)

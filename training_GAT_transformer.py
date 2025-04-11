@@ -81,7 +81,7 @@ NUM_EPOCHS = 200
 
 print('Learning rate: ', LR)
 print('Epochs: ', NUM_EPOCHS)
-datafile = 'new_labels_0_10_leave'
+datafile = 'new_labels_0_10'
 
 # CPU or GPU
 
