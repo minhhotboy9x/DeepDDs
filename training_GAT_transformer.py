@@ -81,7 +81,7 @@ NUM_EPOCHS = 200
 
 print('Learning rate: ', LR)
 print('Epochs: ', NUM_EPOCHS)
-datafile = 'new_labels_0_10'
+datafile = 'new_labels_0_10_leave'
 
 # CPU or GPU
 
@@ -117,7 +117,8 @@ for i in range(5):
     drug2_loader_train = DataLoader(drug2_data_train, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
     drug2_loader_test = DataLoader(drug2_data_test, batch_size=TRAIN_BATCH_SIZE, shuffle=None)
 
-    model = modeling().to(device)
+    num_cell_features = drug1_data_train[0].cell.shape[-1]
+    model = modeling(num_features_xt=num_cell_features).to(device)
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 

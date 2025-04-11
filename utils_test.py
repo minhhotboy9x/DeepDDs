@@ -13,7 +13,7 @@ class TestbedDataset(InMemoryDataset):
     def __init__(self, root='/tmp', dataset='_drug1',
                  xd=None, xt=None, y=None, xt_featrue=None, transform=None,
                  pre_transform=None, smile_graph=None):
-
+        # xd: drug SMILES, xt: cell line, y: label, xt_featrue: cell line feature
         #root is required for save preprocessed data, default is '/tmp'
         super(TestbedDataset, self).__init__(root, transform, pre_transform)
         # benchmark dataset, default = 'davis'
@@ -50,6 +50,7 @@ class TestbedDataset(InMemoryDataset):
         for row in islice(cell_features, 0, None):
             if cellId in row[0]:
                 return row[1:]
+        # print('cellId not found in cell_features:', cellId, cell_features)
         return False
 
     # Customize the process method to fit the task of drug-target affinity prediction
