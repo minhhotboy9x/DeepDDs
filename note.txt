@@ -1,0 +1,1 @@
+đổi datafile trong các file training thành new_labels_0_10
