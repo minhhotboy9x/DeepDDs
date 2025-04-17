@@ -8,4 +8,5 @@ data/processed/kiba_test.pt
 data/processed/kiba_train.pt
 
 *.pt
-
+data/result/*
+pycache/*

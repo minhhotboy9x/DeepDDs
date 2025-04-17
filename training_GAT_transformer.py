@@ -62,7 +62,14 @@ def shuffle_dataset(dataset, seed):
     np.random.shuffle(dataset)
     return dataset
 
-
+def txt_2_csv(file):
+    with open(file, 'r') as f:
+        lines = f.readlines()
+    data = [line.strip().split("\t") for line in lines]
+    df = pd.DataFrame(data[1:], columns=data[0])
+    file_csv = file.replace('.txt', '.csv')
+    df.to_csv(file_csv, index=False, encoding="utf-8")
+    
 def split_dataset(dataset, ratio):
     n = int(len(dataset) * ratio)
     dataset_1, dataset_2 = dataset[:n], dataset[n:]
@@ -157,6 +164,7 @@ for i in range(5):
             best_auc = AUC
             AUCs = [epoch, AUC, PR_AUC, ACC, BACC, PREC, TPR, KAPPA, recall]
             save_AUCs(AUCs, file_AUCs)
+            txt_2_csv(file_AUCs)
             # torch.save(model.state_dict(), model_file_name)
             # independent_num = []
             # independent_num.append(test_num)
