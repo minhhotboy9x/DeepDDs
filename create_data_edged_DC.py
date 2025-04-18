@@ -49,15 +49,16 @@ def bond_features(bond):
                     Chem.rdchem.BondType.DOUBLE,
                     Chem.rdchem.BondType.TRIPLE,
                     Chem.rdchem.BondType.AROMATIC,'Unknown']) +
+
         one_of_k_encoding(bond.GetBondDir(), 
                     [Chem.rdchem.BondDir.ENDUPRIGHT,
                     Chem.rdchem.BondDir.ENDDOWNRIGHT, 
                     Chem.rdchem.BondDir.NONE]) + 
-                    [bond.GetIsAromatic()] +
-                    [bond.GetIsConjugated()] + 
-                    [bond.IsInRing()] + 
-                    [bond.HasOwningMol()] +
-                    [0]*66)
+
+        [bond.GetIsAromatic()] +
+        [bond.GetIsConjugated()] + 
+        [bond.IsInRing()] + 
+        [bond.HasOwningMol()])
 
 def smile_to_edge_graph(smile):
     mol = Chem.MolFromSmiles(smile)
